@@ -24,26 +24,38 @@ namespace Explore_California_Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<FeatureToggles>(x => new FeatureToggles { 
+            DeveloperExceptions = configuration.GetValue<bool>("FeatureToggles:DeveloperExceptions")
+            });
+            services.AddMvc(option=>option.EnableEndpointRouting=false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            FeatureToggles features)
         {
             app.UseExceptionHandler("/error.html");
 
-            if (configuration.GetValue<bool>("EnableDeveloperExceptions"))
+            if (features.DeveloperExceptions)
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async(context, next) =>
-            { 
-           if (context.Request.Path.Value.Contains("invalid"))
-                throw new Exception("ERROR!");
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.Value.Contains("invalid"))
+                    throw new Exception("ERROR!");
 
-            await next();
-        });
-
+                await next();
+            });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default",
+               "{controller=home}/{action=index}/{id?}"
+               );
+            });
             app.UseFileServer();
         }
     }
