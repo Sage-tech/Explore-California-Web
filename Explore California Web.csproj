@@ -6,11 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Blog\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Blog\index.cshtml" />
     <None Include="Views\Home\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Graph" Version="3.27.0" />
   </ItemGroup>
 
 </Project>

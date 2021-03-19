@@ -11,16 +11,21 @@ namespace Explore_California_Web.Controllers
     {
         [Route("")] 
         public IActionResult Index()
-        {
-            return new ContentResult { Content = "Blog posts" };
+        { 
+            return View();
         }
-         [Route("{year:min(2000)}/{month:int}/{key}")]
+        [Route("{year:min(2000)}/{month:int}/{key}")]
         public IActionResult Post(int year, int month, string key)
-        {
-            return new ContentResult { 
-            Content = string.Format("Year: {0}; Month: {1}; Key: {2}",
-                                     year, month, key)
-            };
+       
+            {
+
+            ViewBag.Title = "Myblog post";
+            ViewBag.Posted = DateTime.Now;
+            ViewBag.Author = "Sierra Soto";
+            ViewBag.Body = "This is a great blog post, don't you think?";
+    
+
+            return View();
         }
     }
 }
