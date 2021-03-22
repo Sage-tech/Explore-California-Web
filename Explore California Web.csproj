@@ -6,15 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Blog\index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Blog\index.cshtml" />
     <None Include="Views\Home\index.cshtml" />
   </ItemGroup>
 
