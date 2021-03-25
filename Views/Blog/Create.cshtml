@@ -6,6 +6,23 @@
 
 <fieldset>
 
+    @using (Html.BeginForm())
+    {
+
+        <p>
+            @Html.EditorFor(x => x.Title)
+            @Html.LabelFor(x => x.Title)
+        </p>
+
+        <p>
+            @Html.TextAreaFor(x => x.Body)
+            @Html.LabelFor(x => x.Body)
+        </p>
+
+        <p>
+            <button type="submit">Create Post</button>
+       </p>
+    }
 
 </fieldset>
 
