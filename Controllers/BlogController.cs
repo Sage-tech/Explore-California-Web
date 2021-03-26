@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Explore_California_Web.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,17 @@ namespace Explore_California_Web.Controllers
             return View();
         }
 
-        [Route("create")]
+        [HttpGet, Route("create")]
         public IActionResult Create()
         {
+            return View();
+        }
+        [HttpPost, Route("create")]
+        public IActionResult Create(Post post)
+        {
+            post.Author = User.Identity.Name;
+            post.Posted = DateTime.Now;
+
             return View();
         }
 
