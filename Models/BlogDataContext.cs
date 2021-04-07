@@ -8,5 +8,6 @@ namespace Explore_California_Web.Models
 {
     public class BlogDataContext : DbContext
     {
+        public DbSet<Post> Posts { get; set; }
     }
 }
