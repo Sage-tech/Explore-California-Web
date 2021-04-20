@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "type": "appInsights.sdk"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "Server=(localdb)\\\\mssqllocaldb'Database=Exlpore_California_Web;Trusted_Connection=True;",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}

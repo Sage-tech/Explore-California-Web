@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "type": "appInsights"
+    },
+    "secrets1": {
+      "type": "secrets"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "Server=(localdb)\\\\mssqllocaldb'Database=Exlpore_California_Web;Trusted_Connection=True;"
+    }
+  }
+}
